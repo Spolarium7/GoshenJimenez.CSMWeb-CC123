@@ -50,6 +50,40 @@
   </tbody>
 </table>
 
+@{
+  if(Model.Students.Count > 0)
+  {
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        @{
+         <li class="page-item"><a class="page-link" href="~/students?pageSize=@this.Model.PageSize&pageIndex=1&sortBy=@this.Model.SortBy&sortOrder=@this.Model.SortOrder&keyword=@this.Model.Keyword">First</a></li>         
+          if(this.Model.PageIndex > 1)
+          {
+            <li class="page-item">
+              <a class="page-link" href="~/students?pageSize=@this.Model.PageSize&pageIndex=@(this.Model.PageIndex-1)&sortBy=@this.Model.SortBy&sortOrder=@this.Model.SortOrder&keyword=@this.Model.Keyword" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          }
+        }
+
+        <li class="page-item"><a class="page-link" href="#" aria-disabled="true" disabled>@this.Model.PageIndex</a></li>
+
+        @{
+          if(this.Model.PageIndex < this.Model.TotalPages)
+          {
+            <li class="page-item">
+              <a class="page-link" href="~/students?pageSize=@this.Model.PageSize&pageIndex=@(this.Model.PageIndex+1)&sortBy=@this.Model.SortBy&sortOrder=@this.Model.SortOrder&keyword=@this.Model.Keyword" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          }
+        <li class="page-item"><a class="page-link" href="~/students?pageSize=@this.Model.PageSize&pageIndex=@this.Model.TotalPages&sortBy=@this.Model.SortBy&sortOrder=@this.Model.SortOrder&keyword=@this.Model.Keyword">Last</a></li>
+        }
+      </ul>
+    </nav>
+  }
+}
 <script>
     function search(){
         window.location.href = `students?keyword=${document.getElementById("keyword").value}`;

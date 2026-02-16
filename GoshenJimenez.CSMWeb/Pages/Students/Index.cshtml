@@ -1,0 +1,65 @@
+@page "/students"
+@using GoshenJimenez.CSMWeb.Infrastructure.Models
+@model GoshenJimenez.CSMWeb.Pages.Students.Index
+
+<h1>Students Index Page</h1>
+
+<div class="input-group mb-3">
+  <input id="keyword" type="text" class="form-control" placeholder="Search by Fullname" 
+    aria-label="Fullname" aria-describedby="basic-addon2" value="@Model.Keyword">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" onclick="search()"><i class="bi bi-search"></i></button>
+  </div>
+</div>
+
+<table class="table table-hover">
+ <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name 
+        <a href="~/students?sortBy=fullname&sortOrder=desc" class="btn btn-sm btn-light">
+            <i class="bi bi-file-arrow-down-fill"></i>
+        </a>
+        <a href="~/students?sortBy=fullname&sortOrder=asc" class="btn btn-sm btn-light">
+            <i class="bi bi-file-arrow-up-fill"></i>
+        </a>
+      </th>
+      <th scope="col">Age
+        <a href="~/students?sortBy=age&sortOrder=desc" class="btn btn-sm btn-light">
+            <i class="bi bi-file-arrow-down-fill"></i>
+        </a>
+        <a href="~/students?sortBy=age&sortOrder=asc" class="btn btn-sm btn-light">
+            <i class="bi bi-file-arrow-up-fill"></i>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @{  
+        int row = 1 ; 
+        foreach(GoshenJimenez.CSMWeb.Infrastructure.Models.Student student in Model.Students)
+        {
+            <tr>
+            <th scope="row">@row</th>
+            <td>@student.FullName</td>
+            <td>@student.Age</td>
+            </tr>
+            row++;
+        } 
+    }       
+  </tbody>
+</table>
+
+<script>
+    function search(){
+        window.location.href = `students?keyword=${document.getElementById("keyword").value}`;
+    }
+
+    document.getElementById("keyword")
+        .addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // prevent form submit
+                search();
+            }
+    });    
+</script>

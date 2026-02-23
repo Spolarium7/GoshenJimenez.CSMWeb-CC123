@@ -1,0 +1,24 @@
+@page "/students/create"
+@model GoshenJimenez.CSMWeb.Pages.Students.Create
+
+<div class="card">
+  <div class="card-header">
+    Create a new Student
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Create a new Student</h5>
+    <form class="row g-3" method="post">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Fullname</label>
+            <input class="form-control" type="text" id="fullname" name="Fullname">
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Age</label>
+            <input class="form-control" type="number" id="age" name="Age">
+        </div>        
+        <div class="col-auto">
+            <input type="submit" class="btn btn-primary mb-3" value="Create">
+        </div>
+    </form>
+  </div>
+</div>

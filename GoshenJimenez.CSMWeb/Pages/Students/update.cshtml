@@ -1,0 +1,26 @@
+@page "/students/update/{id}"
+@model GoshenJimenez.CSMWeb.Pages.Students.Update
+
+<div class="card">
+  <div class="card-header">
+    Update a Student
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Update a Student</h5>
+    <form class="row g-3" method="post">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Fullname</label>
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input class="form-control" type="text" id="fullname" name="Fullname" value="@Model.Fullname">
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Age</label>
+            <input class="form-control" type="number" id="age" name="Age" value="@Model.Age">
+        </div>        
+        <div class="col-auto">
+            <input type="submit" class="btn btn-primary mb-3" value="Update">
+            <a href="/students" class="btn btn-secondary mb-3">Cancel</a>
+        </div>
+    </form>
+  </div>
+</div>

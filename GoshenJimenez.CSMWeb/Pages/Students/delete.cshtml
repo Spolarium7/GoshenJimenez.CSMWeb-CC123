@@ -1,0 +1,26 @@
+@page "/students/delete/{id}"
+@model GoshenJimenez.CSMWeb.Pages.Students.Delete
+
+<div class="card">
+  <div class="card-header">
+    Delete a Student
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Delete a Student</h5>
+    <form class="row g-3" method="post">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Fullname</label>
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input class="form-control" type="text" id="fullname" name="Fullname" value="@Model.Fullname" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Age</label>
+            <input class="form-control" type="number" id="age" name="Age" value="@Model.Age" disabled>
+        </div>        
+        <div class="col-auto">
+            <input type="submit" class="btn btn-danger mb-3" value="Delete">
+            <a href="/students" class="btn btn-secondary mb-3">Cancel</a>
+        </div>
+    </form>
+  </div>
+</div>
